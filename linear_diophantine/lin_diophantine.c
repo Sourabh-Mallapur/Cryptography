@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../gcd/gcd.c"
+#include "../gcd/gcd.h"
 
 // solutions of linear diophantine eqaution
 

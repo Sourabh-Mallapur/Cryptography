@@ -14,4 +14,3 @@ def gcd(a,b):
     else:
         print("not a relative Prime")
     return (a, s1, t1)
-
