@@ -1,4 +1,4 @@
-# implement combined transpopsition method using python considering blocksize as 5
+  # implement combined transpopsition method using python considering blocksize as 5
 def encrypt_transposition(plaintext, key, blocksize):
   # make the plaintext length divisible by blocksize
   padding = blocksize - len(plaintext) % blocksize
