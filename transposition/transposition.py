@@ -16,7 +16,6 @@ def encrypt_transposition(plaintext, key, blocksize):
   return(ciphertext)
 
 
-
 def decrypt_transposition(ciphertext, key, blocksize):
   # Decryption
   temp = ''.join([str(i) for i in range(1,blocksize + 1,1)])
@@ -33,3 +32,11 @@ def decrypt_transposition(ciphertext, key, blocksize):
       decrypted_plaintext += (cip[j][int(i) - 1])
 
   return decrypted_plaintext
+
+plaintext = 'enemyattackstonight'
+blocksize = 5
+key = '31452'
+ciphertext = encrypt_transposition(plaintext, key, blocksize)
+decrypted_plaintext = decrypt_transposition(ciphertext, key, blocksize)
+print("The ciphertext is:", ciphertext)
+print("The decrypted text is:", decrypted_plaintext)
