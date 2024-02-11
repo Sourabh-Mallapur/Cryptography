@@ -1,21 +1,16 @@
 // implement combined transpopsition method using c or python or verilog considering blocksize as 5
-
 #include<stdio.h>
-#include<stdlib.h>
 #include<string.h>
 
-int main() {
-char plaintext[30] = "enemyattackstonight";
-int key = 31452;
-int blocksize = 5;
+void encrypt_transposition(char*, int, int, char*);
 
+void encrypt_transposition(char* plaintext, int key, int blocksize, char* ciphertext) {
 // make the plaintext length divisible by blocksize
 int len_plaintext = strlen(plaintext);
 int padding = blocksize - len_plaintext % blocksize;
 
-for (int i = len_plaintext; i < len_plaintext + padding; i++) {
+for (int i = len_plaintext; i < len_plaintext + padding; i++)
   plaintext[i] = 'z';
-}
 plaintext[len_plaintext + padding] = '\0';
 
 int size = len_plaintext + padding;
@@ -28,9 +23,11 @@ for (int i = 0; i < blocksize; i++) {
   ciphermatrix[i][blocksize - 1] = '\0';
 }
 
-char ciphertext[size + 1];
 int index = 0;
-int divisor = 10000; // Assuming key is a 5-digit number
+int divisor = 1;
+
+for(int i = 1; i < blocksize; i++)
+  divisor *= 10;
 
 while (divisor > 0) {
   int row = key / divisor - 1; // Adjust key to 0-based index
@@ -42,7 +39,14 @@ while (divisor > 0) {
   divisor /= 10;
 }
 ciphertext[size] = '\0';
+}
 
-printf("Cipher Text: %s\n", ciphertext);
+int main() {
+char plaintext[30] = "enemyattackstonight";
+int key = 31452;
+int blocksize = 5;
+char ciphertext[30];
+encrypt_transposition(plaintext, key, blocksize, ciphertext);
+printf("%s\n", ciphertext);
 return 0;
 }
